@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkTrace Light - Скачать</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(30, 30, 46, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 1px solid #0e639c;
+        }
+        h1 {
+            color: #0e639c;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 40px;
+        }
+        .download-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .download-card {
+            background: #1e1e1e;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            width: 250px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #333;
+        }
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(14,99,156,0.3);
+            border-color: #0e639c;
+        }
+        .download-card .icon {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+        .download-card h3 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .download-card p {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            background: #0e639c;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #1177bb;
+        }
+        .instructions {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .instructions h3 {
+            color: #0e639c;
+            margin-bottom: 15px;
+        }
+        .instructions code {
+            background: #2d2d2d;
+            padding: 8px 12px;
+            border-radius: 5px;
+            display: block;
+            font-family: monospace;
+            margin: 10px 0;
+            color: #00ff00;
+        }
+        footer {
+            text-align: center;
+            color: #555;
+            margin-top: 30px;
+            font-size: 12px;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            .download-section { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ DarkTrace Light</h1>
+        <div class="subtitle">Open Source Network Anomaly Detection System</div>
+        
+        <div class="download-section">
+            <div class="download-card">
+                <div class="icon">🐧</div>
+                <h3>Linux / Kali</h3>
+                <p>Для Debian, Ubuntu, Kali</p>
+                <a href="#" class="btn" id="download-linux">Скачать .tar.gz</a>
+            </div>
+            <div class="download-card">
+                <div class="icon">🪟</div>
+                <h3>Windows</h3>
+                <p>Windows 10/11 (требуется Npcap)</p>
+                <a href="#" class="btn" id="download-windows">Скачать .zip</a>
+            </div>
+            <div class="download-card">
+                <div class="icon">📦</div>
+                <h3>GitHub</h3>
+                <p>Исходный код</p>
+                <a href="#" class="btn" id="download-github">GitHub →</a>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>📖 Инструкция по установке</h3>
+            <p><strong>Linux / Kali:</strong></p>
+            <code>tar -xzf darktrace-light-linux.tar.gz<br>cd darktrace-light<br>python3 -m venv venv<br>source venv/bin/activate<br>pip install -r requirements.txt<br>sudo python main.py</code>
+            
+            <p><strong>Windows:</strong></p>
+            <code>1. Установите Npcap с https://npcap.com<br>2. Распакуйте darktrace-light-windows.zip<br>3. Запустите setup.bat (или вручную через PowerShell)</code>
+        </div>
+        
+        <footer>
+
+        </footer>
+    </div>
+    
+    <script>
+        document.getElementById('download-linux').onclick = (e) => {
+            e.preventDefault();
+            alert('Скачивание Linux версии...\nФайл: darktrace-light-linux.tar.gz');
+            // Здесь будет реальная ссылка после загрузки файла
+        };
+        document.getElementById('download-windows').onclick = (e) => {
+            e.preventDefault();
+            alert('Скачивание Windows версии...\nФайл: darktrace-light-windows.zip');
+        };
+        document.getElementById('download-github').onclick = (e) => {
+            e.preventDefault();
+            alert('Переход на GitHub репозиторий');
+        };
+    </script>
+</body>
+</html>
