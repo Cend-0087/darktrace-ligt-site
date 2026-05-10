@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DarkTrace Light - Скачать</title>
+    <title>DarkTrace Light - Система обнаружения аномалий в сети</title>
     <style>
         * {
             margin: 0;
@@ -14,58 +14,70 @@
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 20px;
         }
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             width: 100%;
-            background: rgba(30, 30, 46, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            border: 1px solid #0e639c;
+            margin: 0 auto;
         }
-        h1 {
+        
+        /* Хедер */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+        }
+        .header h1 {
             color: #0e639c;
-            text-align: center;
+            font-size: 3em;
             margin-bottom: 10px;
-            font-size: 2.5em;
+            letter-spacing: 2px;
         }
-        .subtitle {
-            text-align: center;
+        .header .subtitle {
             color: #888;
-            margin-bottom: 40px;
+            font-size: 1.1em;
         }
+        .badge {
+            display: inline-block;
+            background: #0e639c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 15px;
+        }
+        
+        /* Секция загрузки */
         .download-section {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 40px;
+            margin-bottom: 60px;
         }
         .download-card {
-            background: #1e1e1e;
-            border-radius: 15px;
-            padding: 25px;
+            background: rgba(30, 30, 46, 0.95);
+            border-radius: 20px;
+            padding: 35px;
             text-align: center;
-            width: 250px;
+            width: 280px;
             transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid #333;
+            cursor: pointer;
         }
         .download-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(14,99,156,0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(14,99,156,0.3);
             border-color: #0e639c;
         }
         .download-card .icon {
-            font-size: 64px;
-            margin-bottom: 15px;
+            font-size: 72px;
+            margin-bottom: 20px;
         }
         .download-card h3 {
             color: #fff;
+            font-size: 1.5em;
             margin-bottom: 10px;
         }
         .download-card p {
@@ -77,100 +89,267 @@
             display: inline-block;
             background: #0e639c;
             color: white;
-            padding: 10px 25px;
+            padding: 12px 30px;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 30px;
             font-weight: bold;
             transition: background 0.3s;
         }
         .btn:hover {
             background: #1177bb;
         }
-        .instructions {
+        
+        /* Информационная секция */
+        .info-section {
+            background: rgba(30, 30, 46, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid #333;
+        }
+        .info-section h2 {
+            color: #0e639c;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .feature {
+            flex: 1;
+            min-width: 200px;
             background: #1a1a1a;
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 20px;
+            text-align: center;
+        }
+        .feature .feature-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .feature h4 {
+            color: #0e639c;
+            margin-bottom: 10px;
+        }
+        .feature p {
+            color: #aaa;
+            font-size: 13px;
+        }
+        
+        /* Скриншоты */
+        .screenshots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
             margin-top: 20px;
         }
-        .instructions h3 {
+        .screenshot {
+            background: #1a1a1a;
+            border-radius: 15px;
+            width: 300px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: transform 0.3s;
+        }
+        .screenshot:hover {
+            transform: scale(1.02);
+            border-color: #0e639c;
+        }
+        .screenshot .preview {
+            background: #0a0a0a;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: #0e639c;
-            margin-bottom: 15px;
+            font-size: 14px;
+            border-bottom: 1px solid #333;
         }
-        .instructions code {
-            background: #2d2d2d;
-            padding: 8px 12px;
-            border-radius: 5px;
+        .screenshot .preview .placeholder {
+            text-align: center;
+        }
+        .screenshot .preview .placeholder span {
+            font-size: 48px;
             display: block;
-            font-family: monospace;
-            margin: 10px 0;
-            color: #00ff00;
+            margin-bottom: 10px;
         }
+        .screenshot .caption {
+            padding: 15px;
+            color: #ccc;
+            font-size: 13px;
+            text-align: center;
+        }
+        
+        /* Футер */
         footer {
             text-align: center;
             color: #555;
-            margin-top: 30px;
+            padding: 30px;
             font-size: 12px;
+            border-top: 1px solid #222;
+            margin-top: 20px;
         }
+        footer a {
+            color: #0e639c;
+            text-decoration: none;
+        }
+        
         @media (max-width: 700px) {
-            .container { padding: 20px; }
-            .download-section { flex-direction: column; align-items: center; }
+            .header h1 { font-size: 2em; }
+            .download-section { gap: 20px; }
+            .download-card { width: 100%; max-width: 280px; }
+            .screenshot { width: 100%; max-width: 320px; }
+            .info-section { padding: 20px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🛡️ DarkTrace Light</h1>
-        <div class="subtitle">Open Source Network Anomaly Detection System</div>
+        <!-- Хедер -->
+        <div class="header">
+            <h1>🛡️ DarkTrace Light</h1>
+            <div class="subtitle">Open Source система обнаружения аномалий в сети</div>
+            <div class="badge">v1.0 | Python + ML</div>
+        </div>
         
+        <!-- Секция загрузки -->
         <div class="download-section">
-            <div class="download-card">
+            <div class="download-card" onclick="window.open('https://github.com/Cend-0087/DackTrace-Light', '_blank')">
                 <div class="icon">🐧</div>
                 <h3>Linux / Kali</h3>
-                <p>Для Debian, Ubuntu, Kali</p>
-                <a href="#" class="btn" id="download-linux">Скачать .tar.gz</a>
+                <p>Для Debian, Ubuntu, Kali Linux</p>
+                <div class="btn">Скачать на GitHub →</div>
             </div>
-            <div class="download-card">
+            <div class="download-card" onclick="alert('Репозиторий для Windows будет доступен позже\n\nПока можете использовать инструкцию в README')">
                 <div class="icon">🪟</div>
                 <h3>Windows</h3>
                 <p>Windows 10/11 (требуется Npcap)</p>
-                <a href="#" class="btn" id="download-windows">Скачать .zip</a>
-            </div>
-            <div class="download-card">
-                <div class="icon">📦</div>
-                <h3>GitHub</h3>
-                <p>Исходный код</p>
-                <a href="#" class="btn" id="download-github">GitHub →</a>
+                <div class="btn">Скоро</div>
             </div>
         </div>
         
-        <div class="instructions">
-            <h3>📖 Инструкция по установке</h3>
-            <p><strong>Linux / Kali:</strong></p>
-            <code>tar -xzf darktrace-light-linux.tar.gz<br>cd darktrace-light<br>python3 -m venv venv<br>source venv/bin/activate<br>pip install -r requirements.txt<br>sudo python main.py</code>
-            
-            <p><strong>Windows:</strong></p>
-            <code>1. Установите Npcap с https://npcap.com<br>2. Распакуйте darktrace-light-windows.zip<br>3. Запустите setup.bat (или вручную через PowerShell)</code>
+        <!-- О программе -->
+        <div class="info-section">
+            <h2>📌 О программе</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🔍</div>
+                    <h4>Анализ трафика</h4>
+                    <p>Реальный захват и анализ сетевых пакетов через Scapy</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🤖</div>
+                    <h4>ML аномалии</h4>
+                    <p>Isolation Forest для обнаружения неизвестных атак</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚠️</div>
+                    <h4>Сигнатуры</h4>
+                    <p>SQL инъекции, XSS, командные инъекции</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🚫</div>
+                    <h4>Блокировка</h4>
+                    <p>Автоматическая блокировка через iptables</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Скриншоты -->
+        <div class="info-section">
+            <h2>🖥️ Интерфейс</h2>
+            <div class="screenshots">
+                <div class="screenshot">
+                    <div class="preview">
+                        <div class="placeholder">
+                            <span>📊</span>
+                            Suspicious IPs<br>
+                            Группировка атак по IP
+                        </div>
+                    </div>
+                    <div class="caption">Подозрительные IP с сортировкой по опасности</div>
+                </div>
+                <div class="screenshot">
+                    <div class="preview">
+                        <div class="placeholder">
+                            <span>📝</span>
+                            Live Logs<br>
+                            Логи в реальном времени
+                        </div>
+                    </div>
+                    <div class="caption">Детальные логи с цветовой индикацией</div>
+                </div>
+                <div class="screenshot">
+                    <div class="preview">
+                        <div class="placeholder">
+                            <span>✅</span>
+                            Whitelist / Blacklist<br>
+                            Управление списками
+                        </div>
+                    </div>
+                    <div class="caption">Добавление IP и сетей в белый/чёрный списки</div>
+                </div>
+                <div class="screenshot">
+                    <div class="preview">
+                        <div class="placeholder">
+                            <span>🔍</span>
+                            Детали атаки<br>
+                            Полная информация об IP
+                        </div>
+                    </div>
+                    <div class="caption">Информация о провайдере, reverse DNS, статистика</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Технологии -->
+        <div class="info-section">
+            <h2>⚙️ Технологии</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🐍</div>
+                    <h4>Python 3.8+</h4>
+                    <p>Основной язык</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📡</div>
+                    <h4>Scapy</h4>
+                    <p>Захват трафика</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🧠</div>
+                    <h4>Scikit-learn</h4>
+                    <p>ML модель</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🗄️</div>
+                    <h4>SQLite</h4>
+                    <p>База данных</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Системные требования -->
+        <div class="info-section">
+            <h2>💻 Системные требования</h2>
+            <div style="text-align: center; color: #aaa;">
+                <p>• Linux (Kali, Ubuntu, Debian) — основная платформа</p>
+                <p>• Python 3.8 или выше</p>
+                <p>• Root права (для захвата трафика)</p>
+                <p>• iptables (для блокировки)</p>
+                <p style="margin-top: 15px; font-size: 13px; color: #666;">Windows версия в разработке</p>
+            </div>
         </div>
         
         <footer>
-
+            <p>DarkTrace Light | Open Source | <a href="https://github.com/Cend-0087/DackTrace-Light" target="_blank">GitHub</a></p>
+            <p>Создано в рамках курса "Этичный хакинг на Python с использованием ИИ"</p>
         </footer>
     </div>
-    
-    <script>
-        document.getElementById('download-linux').onclick = (e) => {
-            e.preventDefault();
-            alert('Скачивание Linux версии...\nФайл: darktrace-light-linux.tar.gz');
-            // Здесь будет реальная ссылка после загрузки файла
-        };
-        document.getElementById('download-windows').onclick = (e) => {
-            e.preventDefault();
-            alert('Скачивание Windows версии...\nФайл: darktrace-light-windows.zip');
-        };
-        document.getElementById('download-github').onclick = (e) => {
-            e.preventDefault();
-            alert('Переход на GitHub репозиторий');
-        };
-    </script>
 </body>
 </html>
